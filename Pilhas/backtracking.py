@@ -17,3 +17,19 @@ def resolver_labirinto(lab, x, y):
     
     lab[x][y] = 0
     return False
+
+
+labirinto = [
+    [0,1,0,0],
+    [0,1,0,1],
+    [0,0,0,1],
+    [1,1,0,0]
+]
+
+if resolver_labirinto(labirinto, 0, 0):
+    print("Caminho encontrado:")
+else:
+    print("Não existe caminho")
+
+for linha in labirinto:
+    print(linha)

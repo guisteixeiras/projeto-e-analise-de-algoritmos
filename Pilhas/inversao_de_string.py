@@ -1,4 +1,4 @@
-def inverter_string(s):
+def inverter_string(s): #função recursiva
     if s == "":
         return ""
     

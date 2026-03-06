@@ -22,3 +22,18 @@ def pos_ordem(no):
         pos_ordem(no.direita)
         print(no.valor, end=" ")
 
+
+raiz = No(1)
+raiz.esquerda = No(2)
+raiz.direita = No(3)
+raiz.esquerda.esquerda = No(4)
+raiz.esquerda.direita = No(5)
+
+print("Pré-ordem:")
+pre_ordem(raiz)
+
+print("\nEm ordem:")
+em_ordem(raiz)
+
+print("\nPós-ordem:")
+pos_ordem(raiz)
