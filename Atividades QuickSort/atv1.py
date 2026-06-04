@@ -1,18 +1,25 @@
-lista = [7, 8, 15, 23, 18, 5, 2, 29, 30, 12]  # lista original com os números desordenados
+import random
 
-def quicksort(lista):  # define a função quicksort, que recebe uma lista
-    if len(lista) < 2:  # verifica se a lista tem menos de 2 elementos
-        return lista  # se tiver 0 ou 1 elemento, ela já está ordenada
+def particionar(arr, baixo, alto):
+    pivo = arr[alto]
+    i = baixo - 1
 
-    else:  # se a lista tiver 2 ou mais elementos
-        pivo = lista[0]  # escolhe o primeiro elemento da lista como pivô
+    for j in range(baixo, alto):
+        if arr[j] <= pivo:
+            i += 1
+            arr[i], arr[j] = arr[j], arr[i]
 
-        menores = [i for i in lista[1:] if i <= pivo]  # cria uma lista com os elementos menores ou iguais ao pivô
-        maiores = [i for i in lista[1:] if i > pivo]  # cria uma lista com os elementos maiores que o pivô
+    arr[i + 1], arr[alto] = arr[alto], arr[i + 1]
+    print(f"Pivô usado: {pivo} | Array agora: {arr}")
+    return i + 1
 
-        return quicksort(menores) + [pivo] + quicksort(maiores)  
-        # ordena recursivamente os menores
-        # coloca o pivô no meio
-        # ordena recursivamente os maiores
+def quicksort(arr, baixo, alto):
+    if baixo < alto:
+        pos_pivo = particionar(arr, baixo, alto)
+        quicksort(arr, baixo, pos_pivo - 1)
+        quicksort(arr, pos_pivo + 1, alto)
 
-print(quicksort(lista))  # chama a função e mostra a lista ordenada
+array = random.sample(range(1, 100), 10)
+print(f"Array inicial: {array}\n")
+quicksort(array, 0, len(array) - 1)
+print(f"\nArray final ordenado: {array}")
